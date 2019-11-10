@@ -218,4 +218,35 @@ public class AddrDaoImp extends AddrDao {
 		return 0;
 	}
 
+	@Override
+	public int update(AddrDTO addrDTO) {
+		
+		PreparedStatement pStr = null;
+		String sql = " UPDATE tbl_addr SET ";
+				sql += " NAME = ?,";
+				sql += " TEL = ?,";
+				sql += " ADDR = ?,";
+				sql += " CHAIN = ? ";
+				sql += " WHERE ID = ? ";
+		
+		try {
+			pStr = dbConn.prepareStatement(sql);
+			pStr.setString(1, addrDTO.getName());
+			pStr.setString(2, addrDTO.getTel());
+			pStr.setString(3, addrDTO.getAddr());
+			pStr.setString(4, addrDTO.getChain());
+			pStr.setLong(5, addrDTO.getId());
+			
+			int ret = pStr.executeUpdate();
+			
+			pStr.close();
+			return ret;
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return 0;
+	}
+
 }

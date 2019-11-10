@@ -7,7 +7,7 @@ import com.biz.addr.persistence.dao.AddrDao;
 import com.biz.addr.persistence.dao.AddrDaoImp;
 
 public class AddrCUDServiceV1 {
-	
+
 	private AddrServiceV1 as = null;
 	private AddrDao addrDao = null;
 	private Scanner scanner = null;
@@ -92,4 +92,52 @@ public class AddrCUDServiceV1 {
 		
 	}
 
+		public void updateAddr() {
+			
+			System.out.println("==================");
+			System.out.println("주소록 수정");
+			System.out.println("==================");
+			System.out.print("수정할 ID(-Q:quit) >> ");
+			String strID = scanner.nextLine();
+			
+			if (strID.equals("-Q"));
+			
+			long ID = Long.valueOf(strID);
+			AddrDTO addrDTO = addrDao.findById(ID);
+			
+			System.out.printf("변경할 이름(%s)",addrDTO.getName());
+			String strName = scanner.nextLine();
+			if(strName.trim().length() > 0) {
+				addrDTO.setName(strName.trim());
+			}
+			
+			System.out.printf("변경할 전화번호(%s)",addrDTO.getTel());
+			String strTel = scanner.nextLine();
+			if(strTel.trim().length() > 0) {
+				addrDTO.setTel(strTel.trim());
+			}
+			
+			System.out.printf("변경할 주소(%s)",addrDTO.getAddr());
+			String strAddr = scanner.nextLine();
+			if(strAddr.trim().length() > 0) {
+				addrDTO.setAddr(strAddr.trim());
+			}
+			
+			System.out.printf("변경할 관계(%s)",addrDTO.getChain());
+			String strChain = scanner.nextLine();
+			if(strChain.trim().length() > 0) {
+				addrDTO.setChain(strChain.trim());
+			}
+			
+			int ret = addrDao.update(addrDTO);
+			if(ret > 0) {
+				System.out.println("주소록 변경완료!!");
+			} else {
+				System.out.println("주소록 변경실패!!");
+			}
+			
+			addrDao.update(addrDTO);
+	}	
+
 }
+

@@ -22,18 +22,18 @@ public class AddrServiceV1 {
 	}
 	
 	private void viewList(List<AddrDTO> addrList) {
-		System.out.println("=====================================");
+		System.out.println("=================================");
 		System.out.println("주소록 리스트 v1");
-		System.out.println("=====================================");
+		System.out.println("================================");
 		System.out.println("ID\t이름\t전화번호\t\t관계");
-		System.out.println("-------------------------------------");
+		System.out.println("--------------------------------");
 		for(AddrDTO dto : addrList) {
 			System.out.printf("%d\t",dto.getId());
 			System.out.printf("%s\t",dto.getName());
 			System.out.printf("%s\t",dto.getTel());
 			System.out.printf("%s\n",dto.getChain());
 		}
-		System.out.println("=====================================");
+		System.out.println("=================================");
 	}
 	
 	public void viewAddrList() {
@@ -75,7 +75,7 @@ public class AddrServiceV1 {
 		List<AddrDTO> addrList = addrDao.findByTel(strTel);
 		
 		if(addrList == null || addrList.size() < 1) {
-			System.out.println("찾는 전화번호 없음!!");
+			System.out.println("찾는 이름이 없음!!");
 			return "-Q";
 		}
 		

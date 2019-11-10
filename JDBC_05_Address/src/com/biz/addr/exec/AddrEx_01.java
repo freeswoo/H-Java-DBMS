@@ -11,7 +11,9 @@ public class AddrEx_01 {
 		as.viewAddrList();
 		//as.searchAddrName();
 		//as.searchAddrTel();
-		//as.searchAddrChain();
+		as.searchAddrChain();
+		
+		
 		
 	}
 

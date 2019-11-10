@@ -9,10 +9,6 @@
 	findByName(String name);
 	findByTel(String tel);
 	findByChain(String chain);
-	
-	insert(DTO dto);
-	delete(long id); 
-	update(DTO dto);
 
 * ~.service : AddrServiceV1 클래스
    main()에서 호출되는 method 들 생성
